@@ -10,9 +10,11 @@ export const usePosition = () => {
       // If there is no registered watch, we need to create one.
       WATCH_ID = navigator.geolocation.watchPosition(
         (position) => {
+          console.log('Geolocation position', position);
           sharedPositionSubject.next(position);
         },
         (error) => {
+          console.log('Geolocation error', error);
           // TODO Handle errors
         },
         { enableHighAccuracy: true }
