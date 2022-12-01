@@ -30,10 +30,7 @@ export const useChuffing = (): UseChuffing => {
       const ratio = speed / 21;
 
       const adjusted = Math.max(lowestSpeed, Math.min(ratio, maxSpeed));
-
-      slowChuffing.rate(adjusted, SHARED_CHUFF_ID);
-
-      console.log(adjusted);
+      slowChuffing.rate(adjusted);
     },
   };
 };
