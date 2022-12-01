@@ -2,32 +2,27 @@ import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import { Howl } from 'howler';
 
-import { usePosition } from './streams/usePosition';
 import { useChuffing } from './sound/useChuffing';
+import { useSpeed } from './streams/useSpeed';
 
 function App() {
   const [speed, setSpeed] = useState<number>(0);
 
   const [bellActive, setBellActive] = useState(false);
-  const [coords, setCoords] = useState('');
 
   const chuffing = useChuffing();
-
-  const position$ = usePosition();
+  const speed$ = useSpeed();
 
   const bellSound = useMemo(() => {
     return new Howl({ src: 'bell.mp3', loop: true });
   }, []);
 
   useEffect(() => {
-    position$.subscribe((position) => {
-      if (position.coords.speed) {
-        setCoords(`[${position.coords.longitude}, ${position.coords.latitude}]`);
-        setSpeed(position.coords.speed);
-        chuffing.setSpeed(position.coords.speed);
-      }
+    speed$.subscribe((speed_) => {
+      setSpeed(speed_);
+      chuffing.setSpeed(speed_);
     });
-  }, [position$, chuffing]);
+  }, [chuffing, speed$]);
 
   useEffect(() => {
     if (bellActive) {
@@ -75,8 +70,6 @@ function App() {
 
         <h1>Speed</h1>
         <p>{`${speed} m/s`}</p>
-
-        <p>{coords}</p>
       </header>
     </div>
   );

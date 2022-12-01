@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { useMemo, useEffect } from 'react';
+import { useEffect } from 'react';
 
 let WATCH_ID: number;
 const sharedPositionSubject = new Subject<GeolocationPosition>();

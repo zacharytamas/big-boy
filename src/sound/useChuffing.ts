@@ -1,5 +1,4 @@
 import { Howl } from 'howler';
-import { useMemo } from 'react';
 
 interface UseChuffing {
   /** Set the current speed of the engine in meters per second. */
