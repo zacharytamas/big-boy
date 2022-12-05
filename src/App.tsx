@@ -71,8 +71,8 @@ function App() {
           className={cn('border rounded-lg p-4 cursor-pointer text-2xl font-bold text-center', {
             'bg-red-500 animate-pulse text-white': whistleMachine_.matches('sounding'),
           })}
-          onTouchDown={() => sendWhistleMachine('START')}
-          onTouchUp={() => sendWhistleMachine('STOP')}
+          onTouchStart={() => sendWhistleMachine('START')}
+          onTouchEnd={() => sendWhistleMachine('STOP')}
         >
           WHISTLE
         </div>
