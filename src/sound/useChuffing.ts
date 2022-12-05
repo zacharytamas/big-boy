@@ -7,7 +7,7 @@ interface UseChuffing {
   stop(): void;
 }
 
-const slowChuffing = new Howl({ src: ['chuffing-slow.mp3'], loop: true });
+const slowChuffing = new Howl({ src: ['chuff-2.mp3'], loop: true });
 let SHARED_CHUFF_ID: number;
 
 /** A hook for controlling the sound of the chuffing of the engine. */

@@ -6,6 +6,7 @@ import { useMachine } from '@xstate/react';
 import { bellMachine } from './machines/bellMachine';
 import SpeedControlPanel from './SpeedControlPanel';
 import { speedMachine } from './machines/speedMachine';
+import { whistleMachine } from './machines/whistleMachine';
 
 function App() {
   const [engineOn, setEngineOn] = useState(false);
@@ -15,6 +16,8 @@ function App() {
   const bellIsRinging = bell.matches('ringing');
 
   const [speedMachine_, sendSpeedMachine] = useMachine(speedMachine);
+
+  const [whistleMachine_, sendWhistleMachine] = useMachine(whistleMachine);
 
   useEffect(() => {
     chuffing.setSpeed(speedMachine_.context.speed);
@@ -62,6 +65,16 @@ function App() {
         >
           <div className="flex-1 font-bold uppercase text-2xl">Bell</div>
           <div className="flex-1 text-lg">{bellIsRinging ? `Ringing` : `Not Ringing`}</div>
+        </div>
+
+        <div
+          className={cn('border rounded-lg p-4 cursor-pointer text-2xl font-bold text-center', {
+            'bg-red-500 animate-pulse text-white': whistleMachine_.matches('sounding'),
+          })}
+          onMouseDown={() => sendWhistleMachine('START')}
+          onMouseUp={() => sendWhistleMachine('STOP')}
+        >
+          WHISTLE
         </div>
       </div>
     </div>

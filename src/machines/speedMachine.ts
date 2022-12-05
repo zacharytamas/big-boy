@@ -1,6 +1,7 @@
 import { createMachine, assign, spawn, type InvokeCallback, type Actor } from 'xstate';
 
 const MILES_PER_HOUR_IN_METERS_PER_SECOND = 0.44704;
+const DEFAULT_SPEED = 20.5;
 
 export const speedMachine = createMachine(
   {
@@ -16,9 +17,7 @@ export const speedMachine = createMachine(
     tsTypes: {} as import('./speedMachine.typegen').Typegen0,
     id: 'speed',
     initial: 'static',
-    context: {
-      speed: 20,
-    },
+    context: { speed: DEFAULT_SPEED },
     on: { START_AUTO: 'auto', START_STATIC: 'static' },
     states: {
       auto: {
