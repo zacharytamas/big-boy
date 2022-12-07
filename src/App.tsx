@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
+
 import cn from 'classnames';
 
-import { useChuffing } from './sound/useChuffing';
 import { useMachine } from '@xstate/react';
+
 import WhistleButton from './components/WhistleButton';
 import { bellMachine } from './machines/bellMachine';
-import SpeedControlPanel from './SpeedControlPanel';
 import { speedMachine } from './machines/speedMachine';
 import { whistleMachine } from './machines/whistleMachine';
+import { useChuffing } from './sound/useChuffing';
+import SpeedControlPanel from './SpeedControlPanel';
 
 function App() {
   const [engineOn, setEngineOn] = useState(false);
