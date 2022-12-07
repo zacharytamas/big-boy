@@ -5,7 +5,9 @@ export interface Typegen0 {
   internalEvents: {
     "xstate.init": { type: "xstate.init" };
   };
-  invokeSrcNameMap: {};
+  invokeSrcNameMap: {
+    sounding: "done.invoke.whistle.sounding:invocation[0]";
+  };
   missingImplementations: {
     actions: never;
     services: never;
@@ -13,7 +15,9 @@ export interface Typegen0 {
     delays: never;
   };
   eventsCausingActions: {};
-  eventsCausingServices: {};
+  eventsCausingServices: {
+    sounding: "START";
+  };
   eventsCausingGuards: {};
   eventsCausingDelays: {};
   matchesStates: "idle" | "sounding";
