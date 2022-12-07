@@ -16,6 +16,6 @@ export interface Typegen0 {
   eventsCausingServices: {};
   eventsCausingGuards: {};
   eventsCausingDelays: {};
-  matchesStates: "idle" | "sounding" | "startRequested" | "stopRequested";
+  matchesStates: "idle" | "sounding";
   tags: never;
 }

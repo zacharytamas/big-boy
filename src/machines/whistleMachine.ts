@@ -1,4 +1,4 @@
-import { Actor, createMachine, type InvokeCallback } from 'xstate';
+import { Actor, createMachine } from 'xstate';
 import { whistleSound } from '../sound/whistle';
 
 export const whistleMachine = createMachine({
@@ -13,10 +13,6 @@ export const whistleMachine = createMachine({
     idle: {
       on: { START: 'sounding' },
     },
-    startRequested: {
-      invoke: { src: (context, event) => (send) => {} },
-    },
-    stopRequested: {},
     sounding: {
       invoke: {
         src: (context, event) => (send) => {
