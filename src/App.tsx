@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import { useMachine } from '@xstate/react';
 
+import BellButton from './components/BellButton';
 import WhistleButton from './components/WhistleButton';
 import { bellMachine } from './machines/bellMachine';
 import { speedMachine } from './machines/speedMachine';
@@ -66,22 +67,12 @@ function App() {
             </div>
           </div>
 
-          <div
-            className={cn(
-              'flex cursor-pointer items-center rounded-lg border p-4',
-              {
-                'border-green-500 bg-green-100': bellIsRinging,
-              }
-            )}
-            onClick={() => {
+          <BellButton
+            ringing={bellIsRinging}
+            toggleRinging={() => {
               sendBellMachine(bellIsRinging ? `STOP` : `RING`);
             }}
-          >
-            <div className="flex-1 text-2xl font-bold uppercase">Bell</div>
-            <div className="flex-1 text-lg">
-              {bellIsRinging ? `Ringing` : `Not Ringing`}
-            </div>
-          </div>
+          />
 
           <WhistleButton
             sounding={whistleMachine_.matches('sounding')}
