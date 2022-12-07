@@ -68,9 +68,12 @@ function App() {
         </div>
 
         <div
-          className={cn('border rounded-lg p-4 cursor-pointer text-2xl font-bold text-center', {
-            'bg-red-500 animate-pulse text-white': whistleMachine_.matches('sounding'),
-          })}
+          className={cn(
+            'border rounded-lg p-4 cursor-pointer text-2xl font-bold text-center select-none',
+            {
+              'bg-red-500 animate-pulse text-white': whistleMachine_.matches('sounding'),
+            }
+          )}
           onTouchStart={() => sendWhistleMachine('START')}
           onTouchEnd={() => sendWhistleMachine('STOP')}
         >
