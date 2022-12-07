@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# Big Boy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a somewhat silly project that I build for my little boys who are obsessed
+with trains and specifically steam engine locomotives. They run around the house
+making steam engine noises, calling themselves steam engines. I take them to
+preschool in the mornings and they've taken to calling my car the "Big Black Engine",
+which is their name for a specific steam engine: the ["Living Legend" Union Pacific
+844](https://www.up.com/heritage/steam/844/index.htm). They also really enjoy the "Big Boy" which is an official nickname for the
+[Union Pacific 4014](https://www.up.com/heritage/steam/4014/index.htm).
+
+One morning while driving them to school the idea struck me: _what if my car really
+was the Big Black Engine?_ Since I always have my iPhone plugged into my car with
+CarPlay anyway, I could play any kind of sounds through the car speakers that I
+wanted to: specifically steam engine noises, whistles, and bells. I had the thought
+almost immediately that I could probably use the [Geolocation Web API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) to get my live
+location and possibly even my speed, which could be used to automatically adjust the
+sounds of the steam engine, making the sounds from my "steam engine" model what was
+actually happening in my car.
+
+This project is my attempt at making a reasonably high-quality attempt at this idea
+in an attempt to experiment with new APIs I've not used before
+(`navigator.geoLocation`), UI composition with [finite state machines](https://xstate.js.org/), [WebAudio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API),
+audio editing, etc.
+
+**But mostly my stakeholders are my two train-loving twin boys who now make me drive
+them to school every weekday morning with bells and whistles blaring the whole way. 😅**
 
 ## Available Scripts
 
@@ -27,20 +50,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+See the section about
+[deployment](https://facebook.github.io/create-react-app/docs/deployment) for more
+information.
