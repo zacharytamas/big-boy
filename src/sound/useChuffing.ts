@@ -7,6 +7,8 @@ interface UseChuffing {
   stop(): void;
 }
 
+const ENGINE_VOLUME = 0.7;
+
 const slowChuffing = new Howl({ src: ['chuff-2.mp3'], loop: true });
 let SHARED_CHUFF_ID: number;
 
@@ -16,12 +18,14 @@ export const useChuffing = (): UseChuffing => {
     start: () => {
       if (!slowChuffing.playing()) {
         SHARED_CHUFF_ID = slowChuffing.play();
-        slowChuffing.fade(0, 1, 250, SHARED_CHUFF_ID);
+        slowChuffing.fade(0, ENGINE_VOLUME, 250, SHARED_CHUFF_ID);
       }
     },
     stop: () => {
       if (slowChuffing.playing()) {
-        slowChuffing.fade(1, 0, 1000, SHARED_CHUFF_ID).once('fade', (id) => slowChuffing.stop(id));
+        slowChuffing
+          .fade(ENGINE_VOLUME, 0, 1000, SHARED_CHUFF_ID)
+          .once('fade', (id) => slowChuffing.stop(id));
       }
     },
     setSpeed: (speed) => {
