@@ -5,7 +5,9 @@ export interface Typegen0 {
   internalEvents: {
     "xstate.init": { type: "xstate.init" };
   };
-  invokeSrcNameMap: {};
+  invokeSrcNameMap: {
+    geoSpeed: "done.invoke.speed.auto:invocation[0]";
+  };
   missingImplementations: {
     actions: never;
     services: never;
@@ -17,7 +19,9 @@ export interface Typegen0 {
     manualSpeedIncrease: "MANUAL_SPEED_INCREASE";
     setSpeed: "SET_SPEED";
   };
-  eventsCausingServices: {};
+  eventsCausingServices: {
+    geoSpeed: "START_AUTO";
+  };
   eventsCausingGuards: {};
   eventsCausingDelays: {};
   matchesStates: "auto" | "static";
