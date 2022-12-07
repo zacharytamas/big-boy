@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import cn from 'classnames';
-
 import { useMachine } from '@xstate/react';
 
 import BellButton from './components/BellButton';
+import EngineButton from './components/EngineButton';
 import WhistleButton from './components/WhistleButton';
 import { bellMachine } from './machines/bellMachine';
 import { speedMachine } from './machines/speedMachine';
@@ -50,22 +49,12 @@ function App() {
             }}
           />
 
-          <div
-            className={cn(
-              'flex cursor-pointer items-center rounded-lg border p-4',
-              {
-                'border-green-500 bg-green-100': engineOn,
-              }
-            )}
-            onClick={() => {
+          <EngineButton
+            active={engineOn}
+            toggleEngine={() => {
               setEngineOn((val) => !val);
             }}
-          >
-            <div className="flex-1 text-2xl font-bold uppercase">Engine</div>
-            <div className="flex-1 text-lg">
-              {engineOn ? `Running` : `Not Running`}
-            </div>
-          </div>
+          />
 
           <BellButton
             ringing={bellIsRinging}
