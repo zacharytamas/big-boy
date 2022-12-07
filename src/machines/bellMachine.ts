@@ -1,19 +1,25 @@
-import { createMachine } from 'xstate';
 import { Howl } from 'howler';
+import { createMachine } from 'xstate';
 
-interface BellContext {}
+import { bellSound } from '../sound/bell';
 
 /**
  * A state machine defining the operation of the engine's bell.
  */
-export const bellMachine = createMachine<BellContext>(
+export const bellMachine = createMachine(
   {
     id: 'bell',
     initial: 'not-ringing',
+    schema: {
+      context: {} as { bellSound: Howl },
+      events: {} as { type: 'RING' } | { type: 'STOP' },
+    },
+    tsTypes: {} as import('./bellMachine.typegen').Typegen0,
+    context: { bellSound },
     states: {
       ringing: {
         description: `The engine's bell is ringing.`,
-        activities: ['ringing'],
+        invoke: { src: 'ringing' },
         on: { STOP: { target: 'not-ringing' } },
       },
       'not-ringing': {
@@ -23,20 +29,21 @@ export const bellMachine = createMachine<BellContext>(
     },
   },
   {
-    activities: {
-      ringing: () => {
-        const bell = new Howl({ src: ['bell-2.mp3'], loop: true });
-        const bell1Id = bell.play();
+    services: {
+      ringing:
+        ({ bellSound }) =>
+        () => {
+          const bell1Id = bellSound.play();
 
-        return () => {
-          bell
-            .loop(false, bell1Id)
-            .fade(1, 0, (bell.duration() - bell.seek(bell1Id)) * 1000, bell1Id)
-            .once('fade', () => {
-              bell.stop(bell1Id);
-            });
-        };
-      },
+          return () => {
+            bellSound
+              .loop(false, bell1Id)
+              .fade(1, 0, (bellSound.duration() - bellSound.seek(bell1Id)) * 1000, bell1Id)
+              .once('fade', () => {
+                bellSound.stop(bell1Id);
+              });
+          };
+        },
     },
   }
 );
