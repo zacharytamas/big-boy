@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { PropsWithChildren } from 'react';
 import { StateFrom } from 'xstate';
-import { speedMachine } from './machines/speedMachine';
+import { speedMachine } from '../machines/speedMachine';
 
 interface SpeedControlPanelProps {
   speedMachine: StateFrom<typeof speedMachine>;
@@ -10,9 +10,12 @@ interface SpeedControlPanelProps {
   toggleAuto: () => void;
 }
 
-const SpeedButton = ({ children, onClick }: PropsWithChildren<{ onClick: () => void }>) => (
+const SpeedButton = ({
+  children,
+  onClick,
+}: PropsWithChildren<{ onClick: () => void }>) => (
   <div
-    className="border rounded font-bold text-2xl bg-gray-200 w-10 h-10 flex items-center justify-center cursor-pointer select-none"
+    className="flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded border bg-gray-200 text-2xl font-bold"
     onClick={onClick}
   >
     {children}
@@ -34,12 +37,12 @@ export default function SpeedControlPanel({
   // TODO Re-add automatic speed adjustments.
 
   return (
-    <div className="flex border-black rounded-lg border-4 p-4 text-2xl items-center">
-      <div className="flex-1 font-bold flex items-center space-x-2">
+    <div className="flex items-center rounded-lg border-4 border-black p-4 text-2xl">
+      <div className="flex flex-1 items-center space-x-2 font-bold">
         <div
           onClick={toggleAuto}
           className={cn(
-            'rounded h-10 w-10 flex items-center justify-center cursor-pointer border',
+            'flex h-10 w-10 cursor-pointer items-center justify-center rounded border',
             {
               'bg-gray-500': speedMachine.matches('static'),
               'bg-blue-700': speedMachine.matches('auto'),
@@ -50,7 +53,7 @@ export default function SpeedControlPanel({
         </div>
         <div>SPEED</div>
       </div>
-      <div className="flex-1 flex space-x-2 items-center">
+      <div className="flex flex-1 items-center space-x-2">
         {speedMachine.can('MANUAL_SPEED_DECREASE') ? (
           <SpeedButton onClick={decreaseSpeed}>-</SpeedButton>
         ) : null}

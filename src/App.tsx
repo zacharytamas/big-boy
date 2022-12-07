@@ -9,7 +9,7 @@ import { bellMachine } from './machines/bellMachine';
 import { speedMachine } from './machines/speedMachine';
 import { whistleMachine } from './machines/whistleMachine';
 import { useChuffing } from './sound/useChuffing';
-import SpeedControlPanel from './SpeedControlPanel';
+import SpeedControlPanel from './components/SpeedControlPanel';
 
 function App() {
   const [engineOn, setEngineOn] = useState(false);
