@@ -1,5 +1,7 @@
 # Big Boy
 
+![The basic interface](docs/overview.png)
+
 This is a somewhat silly project that I build for my little boys who are obsessed
 with trains and specifically steam engine locomotives. They run around the house
 making steam engine noises, calling themselves steam engines. I take them to
